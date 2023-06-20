@@ -1,17 +1,17 @@
 ﻿using ECommerce.Models;
 
-namespace ECommerce.API.Repository
+namespace ECommerce.API.Repositories
 {
     public class UserRepository : IUserRepository
     {
         public static List<User> _db = new List<User>();
 
-        public User GetUser(int id)
+        public User Get(int id)
         {
             return _db.Find(x => x.Id == id)!;
         }
 
-        public List<User> GetUsers()
+        public List<User> Get()
         {
             return _db;
         }
@@ -23,13 +23,13 @@ namespace ECommerce.API.Repository
 
         public void Update(User user)
         {
-            _db.Remove(GetUser(user.Id));
+            _db.Remove(Get(user.Id));
             _db.Add(user);
         }
 
         public void Delete(int id)
         {
-            _db.Remove(GetUser(id));
+            _db.Remove(Get(id));
         }
     }
 }
