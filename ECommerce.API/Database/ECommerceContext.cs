@@ -10,6 +10,11 @@ namespace ECommerce.API.Database
         
         }
 
+        public DbSet<User> Users { get; set; }
+        public DbSet<Contact> Contacts { get; set; }
+        public DbSet<DeliveryAddress> DeliveryAddresses { get; set; }
+        public DbSet<Department> Departments { get; set; }
+
         #region Conexão sem distinção de ambientes de execução
         /*
          * Conexão sem distinção de ambientes de execução
@@ -22,5 +27,4 @@ namespace ECommerce.API.Database
         */
         #endregion
     }
-
 }
