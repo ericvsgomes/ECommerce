@@ -1,35 +1,43 @@
-﻿using ECommerce.Models;
+﻿using ECommerce.API.Database;
+using ECommerce.Models;
 
 namespace ECommerce.API.Repositories
 {
     public class UserRepository : IUserRepository
     {
-        public static List<User> _db = new List<User>();
+        private readonly ECommerceContext _context;
+
+        public UserRepository(ECommerceContext context)
+        {
+            _context = context;
+        }
 
         public User Get(int id)
         {
-            return _db.Find(x => x.Id == id)!;
+            return _context.Users.Find(id)!;
         }
 
         public List<User> Get()
         {
-            return _db;
+            return _context.Users.OrderBy(x => x.Id).ToList();
         }
 
         public void Add(User user)
         {
-            _db.Add(user);
+            _context.Users.Add(user);
+            _context.SaveChanges();
         }
 
         public void Update(User user)
         {
-            _db.Remove(Get(user.Id));
-            _db.Add(user);
+            _context.Users.Update(user);
+            _context.SaveChanges();
         }
 
         public void Delete(int id)
         {
-            _db.Remove(Get(id));
+            _context.Users.Remove(Get(id));
+            _context.SaveChanges();
         }
     }
 }

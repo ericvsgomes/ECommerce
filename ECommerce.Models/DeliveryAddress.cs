@@ -10,12 +10,12 @@ namespace ECommerce.Models
     {
         public int Id { get; set; }
         public int UserId { get; set; }
-        public string? AddressName { get; set; }
-        public string? PostalCode { get; set; }
-        public string? State { get; set; }
-        public string? City { get; set; }
-        public string? District { get; set; }
-        public string? Address { get; set; }
+        public string AddressName { get; set; } = null!;
+        public string PostalCode { get; set; } = null!;
+        public string State { get; set; } = null!;
+        public string City { get; set; } = null!;
+        public string District { get; set; } = null!;
+        public string Address { get; set; } = null!;
         public string? Number { get; set; }
         public string? Complement { get; set; }
         public User? User { get; set; }
